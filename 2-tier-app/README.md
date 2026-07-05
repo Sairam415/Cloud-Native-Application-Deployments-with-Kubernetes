@@ -1,6 +1,6 @@
 # 2-Tier Application Deployment on Kubernetes (AWS EC2 + kind + MetalLB)
 
-> A production‑style deployment of a containerized frontend and backend application on Kubernetes, demonstrating service discovery, reverse proxy architecture, containerization, and cloud‑native deployment practices using AWS EC2, kind, and MetalLB.
+> A Kubernetes implementation of a containerized two-tier application deployed on an AWS EC2-hosted Kind cluster. This project demonstrates container orchestration, Kubernetes networking, service discovery, reverse proxy configuration, and cloud-native deployment using Docker, Kind, MetalLB, and Kubernetes.
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-blue)
@@ -210,7 +210,7 @@ Response to User
 | AWS CLI (optional) | Manage AWS EC2 resources              | https://aws.amazon.com/cli/ |
 | A Docker Hub account | Store and pull images                | https://hub.docker.com |
 
-> **Note:** The manifests reference images `bhargav072/2-tire-app-backend:latest` and `bhargav072/2-tire-app-frontend:v1.1`. If you wish to use your own images, either push to Docker Hub with those exact tags or edit the image fields in the manifests and update the `imagePullSecrets` secret name accordingly.
+> **Note:** The manifests reference images `sairam415/2-tier-app-backend:latest` and `sairam415/2-tier-app-frontend:latest`. If you wish to use your own images, either push to Docker Hub with those exact tags or edit the image fields in the manifests and update the `imagePullSecrets` secret name accordingly.
 
 ### Step 1: Clone Repository
 
@@ -456,15 +456,14 @@ Once the frontend is reachable:
 
 ---
 
-## Lessons Learned
+## Implementation Highlights
 
-* **Context matters:** `localhost` means different things in a browser, container, pod, or VM. Always trace the request origin.
-* **Static assets cannot read Kubernetes env‑vars:** JS running in the browser cannot access container environment variables. Use relative paths and let the web server (NGINX) handle proxying.
-* **NGINX as a reverse proxy** is a simple, secure way to hide backend services while still serving static files.
-* **Simplicity wins:** Changing one line in `script.js` and using the existing NGINX config solved a seemingly complex networking issue.
-* **Validate in the browser:** The DevTools Network tab is invaluable for debugging frontend‑backend communication in Kubernetes.
-* **Environment parity:** Keep local (Docker Desktop/kind) and cloud (AWS EC2 + kind) manifests identical to avoid “works on my machine” issues.
-* **Observability:** Adding liveness/readiness probes and centralized logging (e.g., EFK stack) improves production readiness.
+- Implemented frontend-to-backend communication using NGINX Reverse Proxy.
+- Implemented Kubernetes Service discovery using ClusterIP Services.
+- Implemented MetalLB LoadBalancer for external access.
+- Implemented Docker image management using Docker Hub.
+- Implemented Kubernetes Deployments and Services for application orchestration.
+- Implemented namespace isolation for application resources.
 
 ---
 
@@ -485,18 +484,16 @@ Once the frontend is reachable:
 
 ## Project Highlights
 
-✔ Multi‑Tier Application Architecture  
-✔ Docker Containerization  
-✔ Docker Hub Registry Integration  
-✔ Kubernetes Deployment (Deployments, Services)  
-✔ Secure imagePullSecrets Configuration  
-✔ Internal Service Communication (ClusterIP only)  
-✔ Reverse Proxy Pattern (NGINX)  
-✔ Cloud Deployment Ready (AWS EC2 + kind + MetalLB)  
-✔ Troubleshooting Documentation (covers common pitfalls)  
-✔ Real‑World Networking Concepts (service discovery, DNS, proxying)  
-✔ Beginner Friendly (step‑by‑step guides)  
-✔ Interview Ready (demonstrates DevOps, containers, orchestration)  
+✔ Two-Tier Kubernetes Architecture
+✔ Docker Containerization
+✔ Kubernetes Deployments & Services
+✔ MetalLB LoadBalancer
+✔ NGINX Reverse Proxy
+✔ Internal Service Discovery
+✔ Docker Hub Integration
+✔ AWS EC2 Hosted Kind Cluster
+✔ Production-Style Kubernetes Networking
+✔ Troubleshooting Documentation 
 
 ---
 
