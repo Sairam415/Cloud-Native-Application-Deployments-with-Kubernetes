@@ -421,15 +421,8 @@ For a more detailed, step-by-step runbook of these debugging processes, please r
 
 ## Author
 
-**V Venkata Bhargav**
+**Gorantla Sai Ram**<br>
+DevOps Engineer | Kubernetes Practitioner<br><br>
 
-DevOps Engineer | Cloud Enthusiast | Kubernetes Practitioner
-
-* [GitHub](https://github.com/your-username)
-* [LinkedIn](https://linkedin.com/in/your-profile)
-
----
-
-## License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+**GitHub:** https://github.com/Sairam415/<br>
+**LinkedIn:** https://www.linkedin.com/in/sairamgorantla/
