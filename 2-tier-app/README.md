@@ -502,8 +502,8 @@ Once the frontend is reachable:
 
 ## Author
 
-**Gorantla Sai Ram**  
-DevOps Engineer | Kubernetes Practitioner  
+**Gorantla Sai Ram**<br>
+DevOps Engineer | Kubernetes Practitioner<br><br>
 
-GitHub: (https://github.com/sairam415/)
-LinkedIn: (www.linkedin.com/in/sairamgorantla)  
+**GitHub:** https://github.com/Sairam415/<br>
+**LinkedIn:** https://www.linkedin.com/in/sairamgorantla/ 
