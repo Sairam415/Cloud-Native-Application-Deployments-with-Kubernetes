@@ -1,71 +1,179 @@
-# Kubernetes Deployment Guide
+# Kubernetes Deployments
 
-This repository contains two practical, end-to-end guides for deploying containerized applications on Kubernetes. Whether you are just starting out or looking to expand into production-grade cluster management, these projects cover the core concepts and real-world challenges you will face.
-
----
-
-## Projects Overview
-
-| Folder | Architecture | Platform | Highlights |
-|---|---|---|---|
-| **[2-tier-app](2-tier-app/)** | Frontend + Backend | AWS EC2, kind, MetalLB | Service discovery, Nginx reverse proxy, Docker Hub |
-| **[3-tier-app](3-tier-app/)** | Frontend + Backend + Database | Amazon EKS, ECR, ingress-nginx | StatefulSets, PVCs, Secrets, ConfigMaps, Ingress |
+A collection of Kubernetes deployment projects demonstrating the implementation of containerized applications using modern cloud-native technologies. This repository showcases end-to-end deployment workflows, networking, storage, configuration management, and production-ready Kubernetes concepts on both local and managed Kubernetes clusters.
 
 ---
 
-## [2-tier-app](2-tier-app/)
+## Repository Structure
 
-A lightweight, two-tier application demonstrating the fundamentals of container orchestration. It is perfect for understanding how a frontend and backend communicate securely inside a Kubernetes cluster.
-
-**Key Features:**
-- **Frontend:** Static HTML/CSS/JS served by Nginx.
-- **Backend:** Node.js + Express API.
-- **Networking:** Uses a LoadBalancer (MetalLB) for the frontend and a ClusterIP service for the backend, ensuring the backend is not exposed externally.
-- **Proxying:** Nginx acts as a reverse proxy, routing `/api/*` requests from the frontend to the backend service internally.
-- **Platform:** Deployed on a local `kind` (Kubernetes in Docker) cluster running on an AWS EC2 instance.
-
-[Read the full guide for 2-tier-app →](2-tier-app/README.md)
+| Project | Architecture | Platform | Description |
+|----------|-------------|----------|-------------|
+| **2-tier-app** | Frontend + Backend | AWS EC2, Kind, MetalLB | Two-tier application deployment with Kubernetes Services, NGINX reverse proxy, and internal service communication. |
+| **3-tier-app** | Frontend + Backend + Database | Amazon EKS, Amazon ECR, Ingress NGINX | Production-style three-tier application deployment with persistent storage, Ingress, StatefulSets, ConfigMaps, and Secrets. |
 
 ---
 
-## [3-tier-app](3-tier-app/)
+# 2-Tier Application
 
-A production-style, three-tier Quotes application that introduces data persistence and more complex Kubernetes resources. This guide walks through building, pushing, and deploying a full-stack application on a managed Amazon EKS cluster.
+A Kubernetes implementation of a two-tier application consisting of a frontend and backend service deployed on a Kind Kubernetes cluster running on AWS EC2.
 
-**Key Features:**
-- **Frontend:** Flask web UI for displaying and adding quotes.
-- **Backend:** Flask REST API for handling business logic.
-- **Database:** MySQL 8.0 managed as a Kubernetes StatefulSet with a PersistentVolumeClaim (PVC) for data durability.
-- **Networking:** Exposes the application to the internet using an ingress-nginx controller on AWS.
-- **Design:** Uses separate namespaces for each tier, Kubernetes Secrets for passwords, and ConfigMaps for configuration.
-- **Troubleshooting:** Includes detailed runbooks for real-world issues encountered during deployment, such as EBS CSI driver failures and namespace-scoped ConfigMap errors.
+## Architecture
 
-[Read the full guide for 3-tier-app →](3-tier-app/README.md)
+```
+Internet
+    │
+MetalLB LoadBalancer
+    │
+NGINX Frontend
+    │
+ClusterIP Service
+    │
+Node.js Backend API
+```
 
----
+## Implemented Features
 
-## How to Use This Repository
-
-1.  **Start Simple:** Navigate to `2-tier-app/` to get comfortable with Docker, Kubernetes basics, and service discovery.
-2.  **Level Up:** Move to `3-tier-app/` to learn about persistent storage, managed Kubernetes (EKS), container registries (ECR), and handling real-world deployment issues.
-3.  **Follow Along:** Each project has its own `README.md` with step-by-step instructions, commands, and screenshots to guide you through the entire process.
-
----
-
-## Prerequisites
-
-While each project has its own specific requirements, you will generally need:
-
-- **Docker:** For building container images.
-- **kubectl:** For interacting with Kubernetes clusters.
-- **A Cloud Account:** AWS for the EKS deployment in `3-tier-app`, or an EC2 instance for the `kind` cluster in `2-tier-app`.
+- Docker containerization for frontend and backend applications
+- Kubernetes Deployments for application workloads
+- ClusterIP Service for secure backend communication
+- LoadBalancer Service using MetalLB
+- NGINX Reverse Proxy configuration
+- Internal service discovery using Kubernetes DNS
+- Container image management using Docker Hub
+- Application deployment on Kind Kubernetes cluster hosted on AWS EC2
 
 ---
 
-## Author
+# 3-Tier Application
 
-**Gorantla Sai Ram**<br>
-DevOps Engineer | Kubernetes Practitioner<br><br>
+A production-style Kubernetes deployment consisting of frontend, backend, and MySQL database running on Amazon EKS.
 
-**GitHub:** https://github.com/Sairam415/<br>
-**LinkedIn:** https://www.linkedin.com/in/sairamgorantla/
+## Architecture
+
+```
+Internet
+    │
+Ingress Controller
+    │
+Frontend (Flask)
+    │
+Backend API
+    │
+MySQL Database
+(StatefulSet + PVC)
+```
+
+## Implemented Features
+
+- Amazon EKS cluster deployment
+- Amazon ECR integration for container images
+- Kubernetes Deployments
+- Kubernetes StatefulSets
+- Persistent Volume Claims (PVC)
+- ConfigMaps for application configuration
+- Kubernetes Secrets for sensitive credentials
+- Namespace-based resource isolation
+- Ingress NGINX Controller
+- MySQL persistent storage
+- Kubernetes Service discovery
+- Production-ready application deployment architecture
+
+---
+
+# Technologies Used
+
+| Category | Technologies |
+|----------|--------------|
+| Containerization | Docker |
+| Container Registry | Docker Hub, Amazon ECR |
+| Orchestration | Kubernetes |
+| Cloud Platform | AWS |
+| Kubernetes Platform | Kind, Amazon EKS |
+| Networking | Services, Ingress, MetalLB |
+| Storage | Persistent Volumes, Persistent Volume Claims |
+| Configuration | ConfigMaps, Secrets |
+| Database | MySQL |
+| Reverse Proxy | NGINX |
+
+---
+
+# Repository Highlights
+
+- End-to-end Kubernetes application deployment
+- Multi-tier application architecture
+- Production-style Kubernetes resource organization
+- Container image management
+- Kubernetes networking implementation
+- Persistent storage implementation
+- Configuration and secret management
+- Ingress-based external access
+- Namespace-based resource isolation
+- Deployment troubleshooting documentation
+
+---
+
+# Prerequisites
+
+Before deploying these projects, ensure the following tools are installed:
+
+- Docker
+- kubectl
+- Kubernetes Cluster (Kind or Amazon EKS)
+- AWS CLI
+- Git
+
+---
+
+# Deployment Workflow
+
+1. Clone this repository.
+2. Build or pull the required Docker images.
+3. Create the required namespaces.
+4. Deploy Kubernetes manifests.
+5. Verify Pods, Services, and Ingress resources.
+6. Access the deployed application.
+
+Detailed deployment instructions are available inside each project directory.
+
+- **2-tier-app/** – Local Kubernetes deployment using Kind
+- **3-tier-app/** – Amazon EKS deployment
+
+---
+
+# Repository Structure
+
+```
+k8s-deployments
+│
+├── 2-tier-app
+│   ├── frontend
+│   ├── backend
+│   ├── kubernetes
+│   └── README.md
+│
+├── 3-tier-app
+│   ├── frontend
+│   ├── backend
+│   ├── database
+│   ├── kubernetes
+│   └── README.md
+│
+└── README.md
+```
+
+---
+
+# Author
+
+**Gorantla Sai Ram**
+
+**AWS DevOps Engineer**
+
+- GitHub: https://github.com/Sairam415
+- LinkedIn: https://www.linkedin.com/in/sairamgorantla
+
+---
+
+## ⭐ Support
+
+If you found this repository useful, consider giving it a **Star ⭐**.
