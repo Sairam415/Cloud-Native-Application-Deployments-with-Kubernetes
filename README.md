@@ -62,6 +62,10 @@ While each project has its own specific requirements, you will generally need:
 
 ---
 
-## License
+## Author
 
-Both projects in this repository are shared for educational purposes. Check the individual folders for any specific licensing details.
+**Gorantla Sai Ram**<br>
+DevOps Engineer | Kubernetes Practitioner<br><br>
+
+**GitHub:** https://github.com/Sairam415/<br>
+**LinkedIn:** https://www.linkedin.com/in/sairamgorantla/
