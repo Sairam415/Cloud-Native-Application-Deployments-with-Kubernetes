@@ -502,14 +502,8 @@ Once the frontend is reachable:
 
 ## Author
 
-**Your Name**  
-DevOps Engineer | Cloud Enthusiast | Kubernetes Practitioner  
+**Gorantla Sai Ram**  
+DevOps Engineer | Kubernetes Practitioner  
 
-GitHub: https://github.com/your-username  
-LinkedIn: https://linkedin.com/in/your-profile  
-
----
-
-## License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+GitHub: (https://github.com/sairam415/)
+LinkedIn: (www.linkedin.com/in/sairamgorantla)  
