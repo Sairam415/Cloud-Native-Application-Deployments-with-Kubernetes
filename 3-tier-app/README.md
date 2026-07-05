@@ -1,12 +1,12 @@
 # 3-Tier Quotes Application on Amazon EKS
 
-A complete guide for deploying a containerized 3-tier web application (MySQL + Flask API + Flask Frontend) on Amazon Elastic Kubernetes Service (EKS).
+A Kubernetes implementation of a containerized three-tier Quotes application deployed on Amazon Elastic Kubernetes Service (Amazon EKS). This project implements container orchestration, persistent storage, ingress routing, configuration management, and cloud-native deployment using Docker, Amazon ECR, Amazon EKS, and Kubernetes.
 
 ---
 
 ## Architecture Overview
 
-The application consists of three distinct layers:
+The application architecture consists of three containerized tiers:
 
 - **Frontend (Presentation Tier):** A Flask web UI for user interaction.
 - **Backend (Application Tier):** A Flask REST API to handle business logic.
@@ -44,7 +44,7 @@ aws --version && kubectl version --client && eksctl version && docker --version 
 
 ## Part 1: Storing Application Images (Amazon ECR)
 
-Amazon ECR (Elastic Container Registry) is used to store, manage, and deploy Docker images securely within AWS.
+Implemented Amazon ECR as the private container registry for storing and managing Docker images.
 
 ### Step 1.1: Create ECR Repositories
 
@@ -90,7 +90,7 @@ Once completed, the application images are securely stored in Amazon ECR and are
 
 ## Part 2: Creating the Kubernetes Cluster (Amazon EKS)
 
-Amazon EKS (Elastic Kubernetes Service) provides a managed control plane for running Kubernetes workloads.
+Implemented a managed Amazon EKS cluster to host the Kubernetes workloads.
 
 ### Step 2.1: Create an EKS Cluster
 
@@ -123,7 +123,7 @@ The cluster is now active and ready to host the application workloads.
 
 ## Part 3: Preparing the Cluster
 
-Before deploying the application components, the cluster must be prepared with the necessary configuration and secrets.
+Configured the Kubernetes cluster by creating namespaces, Secrets, and ConfigMaps required for the application deployment.
 
 ### Step 3.1: Create Namespaces
 
@@ -159,7 +159,7 @@ kubectl apply -f k8s-manifest/config.yaml
 
 ## Part 4: Deploying the Database Tier (MySQL)
 
-The MySQL database requires persistent storage and a stable network identity. A **StatefulSet** is used to manage the MySQL pod, ensuring data persistence across pod restarts via a PersistentVolumeClaim (PVC).
+Implemented MySQL using a Kubernetes StatefulSet with a PersistentVolumeClaim (PVC) to ensure persistent storage and stable pod identity.
 
 ```bash
 kubectl apply -f k8s-manifest/mysql.yaml
