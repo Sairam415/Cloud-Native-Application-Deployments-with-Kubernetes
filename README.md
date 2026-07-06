@@ -1,4 +1,4 @@
-# Kubernetes Deployments
+# Cloud-Native Application Deployments with Kubernetes
 
 A collection of Kubernetes deployment projects demonstrating the implementation of containerized applications using modern cloud-native technologies. This repository showcases end-to-end deployment workflows, networking, storage, configuration management, and production-ready Kubernetes concepts on both local and managed Kubernetes clusters.
 
